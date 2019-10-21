@@ -1,0 +1,14 @@
+Package: milorGWAS
+Type: Package
+Title: MIxed LOgistic Regression for GWAS
+Version: 0.1
+Date: 2019-10-21
+Author: Herve Perdry 
+Maintainer: Herve Perdry <herve.perdry@u-psud.fr>
+Description: Fast approximate methods for Mixed Logistic Regression in GWAS
+License: GPL-3
+Imports: Rcpp (>= 1.0.2), RcppEigen (>= 0.3.3.5.0)
+Depends: gaston (>= 1.5.5)
+LinkingTo: Rcpp, RcppEigen, gaston
+NeedsCompilation: yes
+RoxygenNote: 6.1.1

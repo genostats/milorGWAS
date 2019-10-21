@@ -1,0 +1,5 @@
+useDynLib(milorGWAS)
+import(RcppEigen)
+importFrom(Rcpp, evalCpp)
+
+export(association.test.logistic)
