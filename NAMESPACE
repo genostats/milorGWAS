@@ -1,5 +1,11 @@
 useDynLib(milorGWAS)
-import(RcppEigen)
+import(gaston)
 importFrom(Rcpp, evalCpp)
+importFrom(gaston, standardize)
+importFrom(gaston, logistic.mm.aireml)
+importFrom("graphics", "plot", "points", "polygon", "segments")
+importFrom("stats", "pchisq", "qbeta")
 
 export(association.test.logistic)
+export(SNP.category)
+export(qqplot.pvalues)
