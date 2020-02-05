@@ -23,13 +23,13 @@ class gwas_logit_offset {
   VECTOR<scalar_t> SNP;
   snp_filler<scalar_t> & S;
 
-  double tol;
+  scalar_t tol;
   int max_iter;  
 
 
   // Q matrice avec Q'Q = Id 
   // [Issue de la décomposition QR de la matrice de covariables]
-  gwas_logit_offset(NumericVector Y, NumericVector Offset, NumericMatrix Q, double tol_, int max_iter_, snp_filler<scalar_t> & S_) 
+  gwas_logit_offset(NumericVector Y, NumericVector Offset, NumericMatrix Q, scalar_t tol_, int max_iter_, snp_filler<scalar_t> & S_) 
   : n(Y.size()), r(Q.ncol()), tol(tol_), max_iter(max_iter_), y(n), offset(n), q(n,r), SNP(n), S(S_) {
     if(Q.nrow() != n || Offset.size() != n) 
       stop("Dimensions mismatch\n");
@@ -65,7 +65,7 @@ class gwas_logit_offset {
       BETA.push_back( beta(0) );
       // correction de variance (inutile)
       // SDBETA.push_back( sqrt( varbeta(0,0)*(n-1)/(n-r-1) ) );
-      SDBETA.push_back( sqrt( varbeta(0,0) ) );
+      SDBETA.push_back( sqrt( varbeta(0,0) ) );  
     }
  
     S.L["beta"] = wrap(BETA);

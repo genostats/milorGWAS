@@ -45,7 +45,7 @@ void logistic_model2(const VECTOR<scalar_t> & y, const MATRIX<scalar_t> & x, VEC
       break; 
   } 
   // Mais il nous faut l'inverse de XWX pour calculer l'écart type
-  XWX_i = XWX.llt().solve( MatrixXd::Identity(p,p) );
+  XWX_i = XWX.llt().solve( MATRIX<scalar_t>::Identity(p,p) );
 }
 
 
@@ -82,6 +82,6 @@ void logistic_model_offset(const VECTOR<scalar_t> & y, const VECTOR<scalar_t> & 
       break; 
   } 
   // Mais il nous faut l'inverse de XWX pour calculer l'écart type
-  XWX_i = XWX.llt().solve( MatrixXd::Identity(p,p) );
+  XWX_i = XWX.llt().solve( MATRIX<scalar_t>::Identity(p,p) ); 
 }
 #endif
