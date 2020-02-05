@@ -1,15 +1,15 @@
+template<typename scalar_t>
+using MATRIX = Eigen::Matrix<scalar_t, Eigen::Dynamic, Eigen::Dynamic>;
+
+template<typename scalar_t>
+using VECTOR = Eigen::Matrix<scalar_t, Eigen::Dynamic, 1>;
+
 #include <Rcpp.h>
 #include <RcppEigen.h>
 #include "snp_filler.h"
 
 #ifndef GWAS_LMM_SCORE
 #define GWAS_LMM_SCORE
-
-template<typename scalar_t>
-using MATRIX = Eigen::Matrix<scalar_t, Eigen::Dynamic, Eigen::Dynamic>;
-
-template<typename scalar_t>
-using VECTOR = Eigen::Matrix<scalar_t, Eigen::Dynamic, 1>;
 
 template<typename scalar_t>
 class gwas_approx_pql {
