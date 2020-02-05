@@ -5,5 +5,7 @@ CXX_STD = CXX11
 PKG_LIBS = -lz	$(LAPACK_LIBS) $(BLAS_LIBS) $(FLIBS) $(SHLIB_OPENMP_CFLAGS) 
 
 PKG_CXXFLAGS = $(SHLIB_OPENMP_CXXFLAGS) 
+#-Wall -Wno-ignored-attributes
+
 
 

@@ -16,15 +16,15 @@ template<typename scalar_t>
 class gwas_logit_offset {
   public:
   int n, r;
+  scalar_t tol;
+  int max_iter;  
+
   VECTOR<scalar_t> y;
   VECTOR<scalar_t> offset;
   MATRIX<scalar_t> q;
 
   VECTOR<scalar_t> SNP;
   snp_filler<scalar_t> & S;
-
-  scalar_t tol;
-  int max_iter;  
 
 
   // Q matrice avec Q'Q = Id 
