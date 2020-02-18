@@ -60,7 +60,7 @@ association.test.logistic <- function(x, Y = x@ped$pheno, X = matrix(1, nrow(x))
   }
 
   # preparation de X [Y COMPRIS DECOMPOSITION QR]
-  X <- gaston:::trans.X(X, mean.y = mean(Y))
+  X <- trans.X(X, mean.y = mean(Y))
 
   # c'est parti
   model <- logistic.mm.aireml(Y, X = X, K, get.P = TRUE, ... )
