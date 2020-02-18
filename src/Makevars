@@ -1,11 +1,1 @@
-# required by  RcppParallel
 CXX_STD = CXX11 
-
-# link zlib and Lapack (RcppArmadillo) + openmp pour RcppArmadillo aussi
-PKG_LIBS = -lz	$(LAPACK_LIBS) $(BLAS_LIBS) $(FLIBS) $(SHLIB_OPENMP_CFLAGS) 
-
-PKG_CXXFLAGS = $(SHLIB_OPENMP_CXXFLAGS) 
-#-Wall -Wno-ignored-attributes
-
-
-
