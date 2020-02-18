@@ -4,9 +4,16 @@
 \alias{association.test.logistic}
 \title{Mixed logistic regression for GWAS}
 \usage{
-association.test.logistic(x, Y = x@ped$pheno, X = matrix(1, nrow(x)),
-  K, beg = 1, end = ncol(x), algorithm = c("offset", "projection"),
-  ...)
+association.test.logistic(
+  x,
+  Y = x@ped$pheno,
+  X = matrix(1, nrow(x)),
+  K,
+  beg = 1,
+  end = ncol(x),
+  algorithm = c("offset", "amle"),
+  ...
+)
 }
 \arguments{
 \item{x}{a bedmatrix}
@@ -41,6 +48,7 @@ data(TTN)
 x <- as.bed.matrix(TTN.gen, TTN.fam, TTN.bim)
 standardize(x) <- "p"
 ## Simulation data ##
+set.seed(1)
 # some covariables
 X <- cbind(1, runif(nrow(x)))
 # A GRM
@@ -53,9 +61,9 @@ lin <- X \%*\% c(0.1,-0.2) + omega
 pi <- 1/(1+exp( -lin ))
 # vector of binary phenotypes
 y <- rbinom(nrow(x), 1, pi)
-# testing association with 1) the PQL, 2) the offset algorithm, 3) the 'projection' algorithm
+# testing association with 1) the score test, 2) the offset algorithm, 3) the 'amle' algorithm
 a1 <- association.test(x, y, X, K = ran$K, method = "lmm", response = "bin")
 a2 <- association.test.logistic(x, y, X, K = ran$K, algorithm = "offset")
-a3 <- association.test.logistic(x, y, X, K = ran$K, algorithm = "projection")
+a3 <- association.test.logistic(x, y, X, K = ran$K, algorithm = "amle")
 
 }

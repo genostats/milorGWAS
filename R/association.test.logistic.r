@@ -19,6 +19,7 @@
 #' x <- as.bed.matrix(TTN.gen, TTN.fam, TTN.bim)
 #' standardize(x) <- "p"
 #' ## Simulation data ##
+#' set.seed(1)
 #' # some covariables
 #' X <- cbind(1, runif(nrow(x)))
 #' # A GRM
