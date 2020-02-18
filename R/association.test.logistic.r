@@ -31,14 +31,14 @@
 #' pi <- 1/(1+exp( -lin ))
 #' # vector of binary phenotypes
 #' y <- rbinom(nrow(x), 1, pi)
-#' # testing association with 1) the score test, 2) the offset algorithm, 3) the 'projection' algorithm
+#' # testing association with 1) the score test, 2) the offset algorithm, 3) the 'amle' algorithm
 #' a1 <- association.test(x, y, X, K = ran$K, method = "lmm", response = "bin")
 #' a2 <- association.test.logistic(x, y, X, K = ran$K, algorithm = "offset")
-#' a3 <- association.test.logistic(x, y, X, K = ran$K, algorithm = "projection")
+#' a3 <- association.test.logistic(x, y, X, K = ran$K, algorithm = "amle")
 #' 
 #' @export
 association.test.logistic <- function(x, Y = x@ped$pheno, X = matrix(1, nrow(x)), K, beg = 1, end = ncol(x), 
-                                      algorithm = c("offset", "projection"), ...) {
+                                      algorithm = c("offset", "amle"), ...) {
 
   if(beg < 1 | end > ncol(x)) stop("range too wide")
   if(is.null(x@mu) | is.null(x@p)) stop("Need mu and p to be set in x (use set.stats)")
