@@ -4,7 +4,7 @@ Title: MIxed LOgistic Regression for GWAS
 Version: 0.2
 Date: 2020-02-17
 Encoding: UTF-8
-Author: Hervé Perdry 
+Author: Hervé Perdry and Jacqueline Milet
 Maintainer: Hervé Perdry <herve.perdry@u-psud.fr>
 Description: Fast approximate methods for Mixed Logistic Regression in GWAS.
 License: GPL-3
