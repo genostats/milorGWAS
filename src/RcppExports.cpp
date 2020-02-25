@@ -42,10 +42,52 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// min_
+double min_(NumericVector x);
+RcppExport SEXP _milorGWAS_min_(SEXP xSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
+    rcpp_result_gen = Rcpp::wrap(min_(x));
+    return rcpp_result_gen;
+END_RCPP
+}
+// max_
+double max_(NumericVector x);
+RcppExport SEXP _milorGWAS_max_(SEXP xSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
+    rcpp_result_gen = Rcpp::wrap(max_(x));
+    return rcpp_result_gen;
+END_RCPP
+}
+// manhattan_thinning
+IntegerVector manhattan_thinning(NumericVector x, NumericVector y, int mx, int my);
+RcppExport SEXP _milorGWAS_manhattan_thinning(SEXP xSEXP, SEXP ySEXP, SEXP mxSEXP, SEXP mySEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type y(ySEXP);
+    Rcpp::traits::input_parameter< int >::type mx(mxSEXP);
+    Rcpp::traits::input_parameter< int >::type my(mySEXP);
+    rcpp_result_gen = Rcpp::wrap(manhattan_thinning(x, y, mx, my));
+    return rcpp_result_gen;
+END_RCPP
+}
+
+RcppExport SEXP gg_manhattan_thinning(SEXP, SEXP, SEXP, SEXP);
 
 static const R_CallMethodDef CallEntries[] = {
     {"_milorGWAS_GWAS_approx_pql_bed", (DL_FUNC) &_milorGWAS_GWAS_approx_pql_bed, 6},
     {"_milorGWAS_GWAS_logit_offset_bed", (DL_FUNC) &_milorGWAS_GWAS_logit_offset_bed, 9},
+    {"_milorGWAS_min_", (DL_FUNC) &_milorGWAS_min_, 1},
+    {"_milorGWAS_max_", (DL_FUNC) &_milorGWAS_max_, 1},
+    {"_milorGWAS_manhattan_thinning", (DL_FUNC) &_milorGWAS_manhattan_thinning, 4},
+    {"gg_manhattan_thinning", (DL_FUNC) &gg_manhattan_thinning, 4},
     {NULL, NULL, 0}
 };
 

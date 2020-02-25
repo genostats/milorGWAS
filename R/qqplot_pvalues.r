@@ -64,7 +64,7 @@ qqplot.pvalues <- function(p, snp.cat, col.cat, col.abline = "red", CB = TRUE, c
     expected <- -log10( (nn:1)/(nn+1) )
     observed <- sort(-log10(pp))
     if(thinning) {
-      w <- gaston:::manhattan.thinning(expected, observed, 10000, 10000)
+      w <- manhattan.thinning(expected, observed, 10000, 10000)
       args$x <- expected[w]
       args$y <- observed[w] 
     } else {
