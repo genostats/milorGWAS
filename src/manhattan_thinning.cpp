@@ -51,7 +51,6 @@ IntegerVector manhattan_thinning(NumericVector x, NumericVector y, int mx, int m
   return wrap(r);
 }
 
-/*
 RcppExport SEXP gg_manhattan_thinning(SEXP xSEXP, SEXP ySEXP, SEXP mxSEXP, SEXP mySEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
@@ -64,4 +63,3 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
-*/
