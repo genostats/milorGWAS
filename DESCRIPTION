@@ -9,7 +9,7 @@ Maintainer: Hervé Perdry <herve.perdry@u-psud.fr>
 Description: Fast approximate methods for Mixed Logistic Regression in GWAS.
 License: GPL-3
 Imports: Rcpp (>= 1.0.2)
-Depends: gaston (>= 1.5.5)
+Depends: gaston (>= 1.5.6)
 LinkingTo: Rcpp, RcppEigen, gaston
 NeedsCompilation: yes
 RoxygenNote: 7.0.2
