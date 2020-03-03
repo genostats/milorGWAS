@@ -7,6 +7,8 @@
 #' @param beg Index of the first SNP tested for association
 #' @param end Index of the last SNP tested for association
 #' @param algorithm Algorithm to use
+#' @param eigenK eigen decomposition of K (only if \code{p} > 0)
+#' @param p Number of principal components to include in the model
 #' @param ... Additional parameter for \code{gaston::logistic.mm.aireml}
 #'
 #' @details Tests the association between the phenotype and requested SNPs in \code{x}.
@@ -17,14 +19,13 @@
 #' @examples 
 #' data(TTN)
 #' x <- as.bed.matrix(TTN.gen, TTN.fam, TTN.bim)
-#' standardize(x) <- "p"
 #' ## Simulation data ##
 #' set.seed(1)
 #' # some covariables
 #' X <- cbind(1, runif(nrow(x)))
-#' # A GRM
+#' # A random GRM
 #' ran <- random.pm( nrow(x))
-#' # the random effects (tau = 1)
+#' # random effects (tau = 1)
 #' omega <- lmm.simu(1, 0, eigenK=ran$eigen)$omega
 #' # linear term of the model
 #' lin <- X %*% c(0.1,-0.2) + omega
@@ -39,15 +40,12 @@
 #' 
 #' @export
 association.test.logistic <- function(x, Y = x@ped$pheno, X = matrix(1, nrow(x)), K, beg = 1, end = ncol(x), 
-                                      algorithm = c("offset", "amle"), ...) {
+                                      algorithm = c("offset", "amle"), eigenK, p = 0, ...) {
 
   if(beg < 1 | end > ncol(x)) stop("range too wide")
   if(is.null(x@mu) | is.null(x@p)) stop("Need mu and p to be set in x (use set.stats)")
   if(length(Y) != nrow(x)) stop("Dimensions of Y and x mismatch")
-  
-  X <- as.matrix(X)
-  if(nrow(X) != nrow(x)) stop("Dimensions of Y and x mismatch")
-  
+
   # check dimensions before anything
   n <- nrow(x)
   if(missing(K)) stop("argument K is mandatory")
@@ -60,7 +58,11 @@ association.test.logistic <- function(x, Y = x@ped$pheno, X = matrix(1, nrow(x))
       stop("K and x dimensions don't match")
   }
 
+  X <- as.matrix(X)
+  if(nrow(X) != nrow(x)) stop("Dimensions of Y and x mismatch")
   # preparation de X [Y COMPRIS DECOMPOSITION QR]
+  if(p > 0)
+    X <- cbind(X, eigenK$vectors[,seq_len(p)])
   X <- trans.X(X, mean.y = mean(Y))
 
   # c'est parti
