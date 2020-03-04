@@ -1,7 +1,7 @@
 #include <Rcpp.h>
 #include <RcppEigen.h>
 #include "snp_filler.h"
-#include "gaston/logit_model.h"
+#include "logit_model.h"
 
 #ifndef GWAS_LMM_SCORE
 #define GWAS_LMM_SCORE
