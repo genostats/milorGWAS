@@ -11,7 +11,7 @@ License: GPL-3
 Imports: Rcpp (>= 1.0.2)
 Depends: gaston (>= 1.5.6)
 LinkingTo: Rcpp, RcppEigen, gaston
-Suggests: knitr, rmarkdown
+Suggests: knitr, rmarkdown, png
 VignetteBuilder: knitr
 NeedsCompilation: yes
 RoxygenNote: 7.0.2

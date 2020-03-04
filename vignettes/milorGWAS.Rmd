@@ -248,7 +248,9 @@ qqplot.pvalues(MLM, cat.str, col.abline="blue", main="MLM - from strata", pch = 
 qqplot.pvalues(MLM, cat.PC1, col.abline="blue", main="MLM - from PC1", pch = 16)
 qqplot.pvalues(MLM, cat.PC2, col.abline="blue", main="MLM - from PC2", pch = 16)
 ```
-![](milorGWAS_files/qqplotsMLM-1.png)
+```{r echo=FALSE}
+knitr::include_graphics("qqplotsMLM-1.png", dpi = 300)
+```
 
 Then, the QQ-plot obtained with mixed logistic regression, in which no
 such differences exist.
@@ -259,10 +261,9 @@ qqplot.pvalues(MLR, cat.str, col.abline="blue", main="MLR - from strata", pch = 
 qqplot.pvalues(MLR, cat.PC1, col.abline="blue", main="MLR - from PC1", pch = 16)
 qqplot.pvalues(MLR, cat.PC1, col.abline="blue", main="MLR - from PC2", pch = 16)
 ```
-![](milorGWAS_files/qqplotsMLR-1.png)
-
-
-
+```{r echo=FALSE}
+knitr::include_graphics("qqplotsMLR-1.png", dpi = 300)
+```
 
 
 
