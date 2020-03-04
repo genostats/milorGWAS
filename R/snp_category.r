@@ -1,3 +1,23 @@
+#' SNP.category
+#'
+#' @param bed A bed matrix 
+#' @param Z A vector of length \code{nrow(bed)} 
+#' @param threshold Variance thresholds
+#'
+#' @details This function determines a SNP Category from a covariable \code{Z},
+#' which can be for example an indicator variable for a population strata, 
+#' or the first genomic principal component.
+#' 
+#' @export
+#' @seealso \code{\link{qqplot.pvalues}}
+#' @examples
+#' # a random vector of categories
+#' ca <- sample(c("A","B","C"), 1e6, TRUE, c(0.05, 0.9, 0.05))
+#' # a vector of p-values, with different distribution depending on the strata
+#' p <- runif(1e6)**ifelse(ca == "A", .8, ifelse(ca == "B", 1, 1.2))
+#' qqplot.pvalues(p, ca)
+#' 
+
 SNP.category <- function(bed, Z, threshold = 0.8) {
   m <- min(Z)
   M <- max(Z)

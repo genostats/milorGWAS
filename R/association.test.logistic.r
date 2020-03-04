@@ -13,9 +13,13 @@
 #'
 #' @details Tests the association between the phenotype and requested SNPs in \code{x}.
 #' The phenotype \code{Y} is a binary trait. A Wald test is performed using an approximate
-#' method defined by the parameter \code{algorithm}.
+#' method defined by the parameter \code{algorithm}. All other arguments are as in 
+#' \code{gaston::association.test}.
 #' 
 #' @return A data frame giving for each SNP the association statistics.
+#' 
+#' @seealso \code{\link[gaston]{association.test}}
+#' 
 #' @examples 
 #' data(TTN)
 #' x <- as.bed.matrix(TTN.gen, TTN.fam, TTN.bim)

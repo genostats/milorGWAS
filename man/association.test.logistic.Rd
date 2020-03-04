@@ -12,6 +12,8 @@ association.test.logistic(
   beg = 1,
   end = ncol(x),
   algorithm = c("offset", "amle"),
+  eigenK,
+  p = 0,
   ...
 )
 }
@@ -30,6 +32,10 @@ association.test.logistic(
 
 \item{algorithm}{Algorithm to use}
 
+\item{eigenK}{eigen decomposition of K (only if \code{p} > 0)}
+
+\item{p}{Number of principal components to include in the model}
+
 \item{...}{Additional parameter for \code{gaston::logistic.mm.aireml}}
 }
 \value{
@@ -41,19 +47,19 @@ Mixed logistic regression for GWAS
 \details{
 Tests the association between the phenotype and requested SNPs in \code{x}.
 The phenotype \code{Y} is a binary trait. A Wald test is performed using an approximate
-method defined by the parameter \code{algorithm}.
+method defined by the parameter \code{algorithm}. All other arguments are as in 
+\code{gaston::association.test}.
 }
 \examples{
 data(TTN)
 x <- as.bed.matrix(TTN.gen, TTN.fam, TTN.bim)
-standardize(x) <- "p"
 ## Simulation data ##
 set.seed(1)
 # some covariables
 X <- cbind(1, runif(nrow(x)))
-# A GRM
+# A random GRM
 ran <- random.pm( nrow(x))
-# the random effects (tau = 1)
+# random effects (tau = 1)
 omega <- lmm.simu(1, 0, eigenK=ran$eigen)$omega
 # linear term of the model
 lin <- X \%*\% c(0.1,-0.2) + omega
@@ -66,4 +72,7 @@ a1 <- association.test(x, y, X, K = ran$K, method = "lmm", response = "bin")
 a2 <- association.test.logistic(x, y, X, K = ran$K, algorithm = "offset")
 a3 <- association.test.logistic(x, y, X, K = ran$K, algorithm = "amle")
 
+}
+\seealso{
+\code{\link[gaston]{association.test}}
 }
