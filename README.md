@@ -1,5 +1,4 @@
-Introduction
-============
+# milorGWAS: MIxed LOgistic Regression in GWAS
 
 This package is for Genome Wide Association Studies using a logistic
 mixed model, using fast approximate methods as described in (Milet and
