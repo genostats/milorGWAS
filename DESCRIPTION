@@ -1,8 +1,8 @@
 Package: milorGWAS
 Type: Package
 Title: MIxed LOgistic Regression for GWAS
-Version: 0.2
-Date: 2020-02-17
+Version: 0.3
+Date: 2020-03-13
 Encoding: UTF-8
 Author: Hervé Perdry and Jacqueline Milet
 Maintainer: Hervé Perdry <herve.perdry@u-psud.fr>

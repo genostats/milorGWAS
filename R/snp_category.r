@@ -8,6 +8,8 @@
 #' which can be for example an indicator variable for a population strata, 
 #' or the first genomic principal component.
 #' 
+#' @return A factor giving the category of each SNP
+#' 
 #' @export
 #' @seealso \code{\link{qqplot.pvalues}}
 #' @examples
