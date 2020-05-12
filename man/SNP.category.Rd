@@ -13,6 +13,9 @@ SNP.category(bed, Z, threshold = 0.8)
 
 \item{threshold}{Variance thresholds}
 }
+\value{
+A factor giving the category of each SNP
+}
 \description{
 SNP.category
 }

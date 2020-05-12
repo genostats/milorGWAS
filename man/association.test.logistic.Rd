@@ -11,9 +11,10 @@ association.test.logistic(
   K,
   beg = 1,
   end = ncol(x),
-  algorithm = c("offset", "amle"),
+  algorithm = c("amle", "offset"),
   eigenK,
   p = 0,
+  model = c("additive", "dominant", "recessive"),
   ...
 )
 }
@@ -36,6 +37,8 @@ association.test.logistic(
 
 \item{p}{Number of principal components to include in the model}
 
+\item{model}{Model for the effect allele (allele A2)}
+
 \item{...}{Additional parameter for \code{gaston::logistic.mm.aireml}}
 }
 \value{
@@ -47,8 +50,13 @@ Mixed logistic regression for GWAS
 \details{
 Tests the association between the phenotype and requested SNPs in \code{x}.
 The phenotype \code{Y} is a binary trait. A Wald test is performed using an approximate
-method defined by the parameter \code{algorithm}. All other arguments are as in 
-\code{gaston::association.test}.
+method defined by the parameter \code{algorithm}. 
+
+Parameter \code{model} allows to specify an additive model (genotypes A1 A1, A1 A2, and A2 A2
+are recoded for analysis as 0, 1 and 2 respectively), a dominant model (genotypes recoded as 0, 1, and 1) or a recessive
+model (recoded as 0, 0 and 1).
+
+All other arguments are as in \code{gaston::association.test}.
 }
 \examples{
 data(TTN)

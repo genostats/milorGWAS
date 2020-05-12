@@ -8,8 +8,8 @@
 using namespace Rcpp;
 
 // GWAS_approx_pql_bed
-List GWAS_approx_pql_bed(XPtr<matrix4> pA, NumericVector PY, NumericMatrix P, NumericVector p, int beg, int end);
-RcppExport SEXP _milorGWAS_GWAS_approx_pql_bed(SEXP pASEXP, SEXP PYSEXP, SEXP PSEXP, SEXP pSEXP, SEXP begSEXP, SEXP endSEXP) {
+List GWAS_approx_pql_bed(XPtr<matrix4> pA, NumericVector PY, NumericMatrix P, NumericVector p, int beg, int end, std::string coding);
+RcppExport SEXP _milorGWAS_GWAS_approx_pql_bed(SEXP pASEXP, SEXP PYSEXP, SEXP PSEXP, SEXP pSEXP, SEXP begSEXP, SEXP endSEXP, SEXP codingSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -19,13 +19,14 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< NumericVector >::type p(pSEXP);
     Rcpp::traits::input_parameter< int >::type beg(begSEXP);
     Rcpp::traits::input_parameter< int >::type end(endSEXP);
-    rcpp_result_gen = Rcpp::wrap(GWAS_approx_pql_bed(pA, PY, P, p, beg, end));
+    Rcpp::traits::input_parameter< std::string >::type coding(codingSEXP);
+    rcpp_result_gen = Rcpp::wrap(GWAS_approx_pql_bed(pA, PY, P, p, beg, end, coding));
     return rcpp_result_gen;
 END_RCPP
 }
 // GWAS_logit_offset_bed
-List GWAS_logit_offset_bed(XPtr<matrix4> pA, NumericVector p, NumericVector Y, NumericVector Offset, NumericMatrix Q, int beg, int end, double tol, int max_iter);
-RcppExport SEXP _milorGWAS_GWAS_logit_offset_bed(SEXP pASEXP, SEXP pSEXP, SEXP YSEXP, SEXP OffsetSEXP, SEXP QSEXP, SEXP begSEXP, SEXP endSEXP, SEXP tolSEXP, SEXP max_iterSEXP) {
+List GWAS_logit_offset_bed(XPtr<matrix4> pA, NumericVector p, NumericVector Y, NumericVector Offset, NumericMatrix Q, int beg, int end, double tol, int max_iter, std::string coding);
+RcppExport SEXP _milorGWAS_GWAS_logit_offset_bed(SEXP pASEXP, SEXP pSEXP, SEXP YSEXP, SEXP OffsetSEXP, SEXP QSEXP, SEXP begSEXP, SEXP endSEXP, SEXP tolSEXP, SEXP max_iterSEXP, SEXP codingSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -38,7 +39,8 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< int >::type end(endSEXP);
     Rcpp::traits::input_parameter< double >::type tol(tolSEXP);
     Rcpp::traits::input_parameter< int >::type max_iter(max_iterSEXP);
-    rcpp_result_gen = Rcpp::wrap(GWAS_logit_offset_bed(pA, p, Y, Offset, Q, beg, end, tol, max_iter));
+    Rcpp::traits::input_parameter< std::string >::type coding(codingSEXP);
+    rcpp_result_gen = Rcpp::wrap(GWAS_logit_offset_bed(pA, p, Y, Offset, Q, beg, end, tol, max_iter, coding));
     return rcpp_result_gen;
 END_RCPP
 }
@@ -82,8 +84,8 @@ END_RCPP
 RcppExport SEXP gg_manhattan_thinning(SEXP, SEXP, SEXP, SEXP);
 
 static const R_CallMethodDef CallEntries[] = {
-    {"_milorGWAS_GWAS_approx_pql_bed", (DL_FUNC) &_milorGWAS_GWAS_approx_pql_bed, 6},
-    {"_milorGWAS_GWAS_logit_offset_bed", (DL_FUNC) &_milorGWAS_GWAS_logit_offset_bed, 9},
+    {"_milorGWAS_GWAS_approx_pql_bed", (DL_FUNC) &_milorGWAS_GWAS_approx_pql_bed, 7},
+    {"_milorGWAS_GWAS_logit_offset_bed", (DL_FUNC) &_milorGWAS_GWAS_logit_offset_bed, 10},
     {"_milorGWAS_min_", (DL_FUNC) &_milorGWAS_min_, 1},
     {"_milorGWAS_max_", (DL_FUNC) &_milorGWAS_max_, 1},
     {"_milorGWAS_manhattan_thinning", (DL_FUNC) &_milorGWAS_manhattan_thinning, 4},

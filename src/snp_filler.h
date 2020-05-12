@@ -6,6 +6,7 @@ template<typename scalar_t>
 class snp_filler {
   public:
   bool monomorphic;
+  typedef scalar_t type;
   Rcpp::List L; // pour éventuellement mettre des infos sur les SNPs lus
 
   snp_filler() : monomorphic(true) {};

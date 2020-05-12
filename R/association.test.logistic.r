@@ -9,12 +9,19 @@
 #' @param algorithm Algorithm to use
 #' @param eigenK eigen decomposition of K (only if \code{p} > 0)
 #' @param p Number of principal components to include in the model
+#' @param model Model for the effect allele (allele A2)
 #' @param ... Additional parameter for \code{gaston::logistic.mm.aireml}
 #'
 #' @details Tests the association between the phenotype and requested SNPs in \code{x}.
 #' The phenotype \code{Y} is a binary trait. A Wald test is performed using an approximate
-#' method defined by the parameter \code{algorithm}. All other arguments are as in 
-#' \code{gaston::association.test}.
+#' method defined by the parameter \code{algorithm}. 
+#' 
+#' Parameter \code{model} allows to specify an additive model (genotypes A1 A1, A1 A2, and A2 A2
+#' are recoded for analysis as 0, 1 and 2 respectively), a dominant model (genotypes recoded as 0, 1, and 1) or a recessive
+#' model (recoded as 0, 0 and 1).
+#' 
+#' All other arguments are as in \code{gaston::association.test}.
+#' 
 #' 
 #' @return A data frame giving for each SNP the association statistics.
 #' 
@@ -44,7 +51,8 @@
 #' 
 #' @export
 association.test.logistic <- function(x, Y = x@ped$pheno, X = matrix(1, nrow(x)), K, beg = 1, end = ncol(x), 
-                                      algorithm = c("offset", "amle"), eigenK, p = 0, ...) {
+                                      algorithm = c("amle", "offset"), eigenK, p = 0, 
+                                      model = c("additive", "dominant", "recessive"), ...) {
 
   if(beg < 1 | end > ncol(x)) stop("range too wide")
   if(is.null(x@mu) | is.null(x@p)) stop("Need mu and p to be set in x (use set.stats)")
@@ -70,16 +78,27 @@ association.test.logistic <- function(x, Y = x@ped$pheno, X = matrix(1, nrow(x))
   X <- trans.X(X, mean.y = mean(Y))
 
   # c'est parti
-  model <- logistic.mm.aireml(Y, X = X, K, get.P = TRUE, ... )
-  omega <- model$BLUP_omega   
+  null.model <- logistic.mm.aireml(Y, X = X, K, get.P = TRUE, ... )
+  omega <- null.model$BLUP_omega   
   # ajout des effets fixes a l'offset
-  if (!is.null(X)) omega <- omega + X%*%model$BLUP_beta 
+  if (!is.null(X)) omega <- omega + X %*% null.model$BLUP_beta 
   
-  if(match.arg(algorithm) == "offset") { 
-    t <- GWAS_logit_offset_bed(x@bed, x@p, Y, omega, X, beg-1, end-1, 1e-8, 25)
+  model <- match.arg(model)
+  if(match.arg(algorithm) == "offset") {
+    if(model == "additive")
+      t <- GWAS_logit_offset_bed(x@bed, x@p, Y, omega, X, beg-1, end-1, 1e-8, 25, "012")
+    if(model == "dominant")
+      t <- GWAS_logit_offset_bed(x@bed, x@p, Y, omega, X, beg-1, end-1, 1e-8, 25, "011")
+    if(model == "recessive")
+      t <- GWAS_logit_offset_bed(x@bed, x@p, Y, omega, X, beg-1, end-1, 1e-8, 25, "001")
   } else {
     pi <- 1/(1+exp(-omega))
-    t <- GWAS_approx_pql_bed(x@bed, Y-pi, model$P, x@p, beg-1, end-1)
+    if(model == "additive")
+      t <- GWAS_approx_pql_bed(x@bed, Y-pi, null.model$P, x@p, beg-1, end-1, "012")
+    if(model == "dominant")
+      t <- GWAS_approx_pql_bed(x@bed, Y-pi, null.model$P, x@p, beg-1, end-1, "011")
+    if(model == "recessive")
+      t <- GWAS_approx_pql_bed(x@bed, Y-pi, null.model$P, x@p, beg-1, end-1, "001")
   }
   
   t$p <- pchisq( (t$beta/t$sd)**2, df = 1, lower.tail = FALSE)
