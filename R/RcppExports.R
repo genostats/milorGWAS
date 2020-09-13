@@ -5,8 +5,16 @@ GWAS_approx_pql_bed <- function(pA, PY, P, p, beg, end, coding) {
     .Call('_milorGWAS_GWAS_approx_pql_bed', PACKAGE = 'milorGWAS', pA, PY, P, p, beg, end, coding)
 }
 
+GWAS_approx_pql_dosages <- function(filename, PY, P, beg, end, tol) {
+    .Call('_milorGWAS_GWAS_approx_pql_dosages', PACKAGE = 'milorGWAS', filename, PY, P, beg, end, tol)
+}
+
 GWAS_logit_offset_bed <- function(pA, p, Y, Offset, Q, beg, end, tol, max_iter, coding) {
     .Call('_milorGWAS_GWAS_logit_offset_bed', PACKAGE = 'milorGWAS', pA, p, Y, Offset, Q, beg, end, tol, max_iter, coding)
+}
+
+GWAS_logit_offset_dosages <- function(filename, Y, Offset, Q, beg, end, tol, max_iter) {
+    .Call('_milorGWAS_GWAS_logit_offset_dosages', PACKAGE = 'milorGWAS', filename, Y, Offset, Q, beg, end, tol, max_iter)
 }
 
 min_ <- function(x) {
@@ -19,5 +27,29 @@ max_ <- function(x) {
 
 manhattan_thinning <- function(x, y, mx, my) {
     .Call('_milorGWAS_manhattan_thinning', PACKAGE = 'milorGWAS', x, y, mx, my)
+}
+
+chol_inverse <- function(X) {
+    .Call('_milorGWAS_chol_inverse', PACKAGE = 'milorGWAS', X)
+}
+
+read_dose_file <- function(filename) {
+    .Call('_milorGWAS_read_dose_file', PACKAGE = 'milorGWAS', filename)
+}
+
+dose_file_dim <- function(filename) {
+    .Call('_milorGWAS_dose_file_dim', PACKAGE = 'milorGWAS', filename)
+}
+
+nb_inds_dose_file <- function(filename) {
+    .Call('_milorGWAS_nb_inds_dose_file', PACKAGE = 'milorGWAS', filename)
+}
+
+samples_dose_file <- function(filename) {
+    .Call('_milorGWAS_samples_dose_file', PACKAGE = 'milorGWAS', filename)
+}
+
+read_vcf_head <- function(filename) {
+    .Call('_milorGWAS_read_vcf_head', PACKAGE = 'milorGWAS', filename)
 }
 

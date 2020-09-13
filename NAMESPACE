@@ -7,5 +7,6 @@ importFrom("graphics", "plot", "points", "polygon", "segments")
 importFrom("stats", "pchisq", "qbeta")
 
 export(association.test.logistic)
+export(association.test.logistic.dosage)
 export(SNP.category)
 export(qqplot.pvalues)
