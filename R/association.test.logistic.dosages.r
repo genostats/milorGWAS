@@ -1,3 +1,25 @@
+#' Mixed logistic regression for GWAS, using dosages
+#' 
+#' @param filename Name of a dosage file
+#' @param Y phenotype vector. Default is column \code{pheno} of \code{x@ped}
+#' @param X A matrix of covariates (defaults to a column of ones for the intercept)
+#' @param K A genetic relationship matrix (or a list of such matrices)
+#' @param beg Index of the first SNP tested for association
+#' @param end Index of the last SNP tested for association
+#' @param algorithm Algorithm to use
+#' @param eigenK eigen decomposition of K (only if \code{p} > 0)
+#' @param p Number of principal components to include in the model
+#' @param ... Additional parameter for \code{gaston::logistic.mm.aireml}
+#'
+#' @details Dosage files can be VCF files with 'DS' or 'GP' fields. It is also possible to use a file
+#' with columns 'id"', 'chr', 'pos', 'A1', 'A2', 'sample1', 'sample2', etc. These files should have a 
+#' header with column names. 
+#' @details For more details refer to \code{\link{association.test.logistic}} and \code{\link[gaston]{association.test}}.
+#' 
+#' @return A data frame giving for each SNP the association statistics.
+#' 
+#' @seealso  \code{\link{association.test.logistic}}, \code{\link[gaston]{association.test}}
+#' 
 #' @export
 association.test.logistic.dosage <- function(filename, Y, X, K, beg, end,
                                              algorithm = c("amle", "offset"), eigenK, p = 0, 
