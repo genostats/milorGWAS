@@ -1,6 +1,6 @@
 CXX_STD = CXX11 
-PKG_CPPFLAGS += -I ../inst/include/milorGWAS/  -lz -L'C:/rtools43/x86_64-w64-mingw32.static.posiw/lib/'
+PKG_CPPFLAGS += -I ../inst/include/milorGWAS/  -lz 
 
-#ZLIB_LIBRARY = C:/rtools43/x86_64-w64-mingw32.static.posiw/lib/libz.a
+ZLIB_LIBRARY = C:/Rtools/local320/lib/i386/libz.a
 
 
