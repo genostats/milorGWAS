@@ -1,7 +1,7 @@
 Package: milorGWAS
 Type: Package
 Title: Mixed Logistic Regression for Genome-Wide Analysis Studies (GWAS)
-Version: 0.5
+Version: 0.6
 Date: 2020-03-13
 Encoding: UTF-8
 Author: Hervé Perdry and Jacqueline Milet
@@ -9,7 +9,7 @@ Maintainer: Hervé Perdry <herve.perdry@u-psud.fr>
 Description: Fast approximate methods for mixed logistic regression in genome-wide analysis studies (GWAS). Milet et al 2020 <doi:10.1101/2020.01.17.910109>.
 License: GPL-3
 Imports: Rcpp (>= 1.0.2)
-Depends: gaston (>= 1.5.7)
+Depends: gaston (>= 1.6)
 LinkingTo: Rcpp, RcppEigen, gaston
 Suggests: knitr, rmarkdown, png
 VignetteBuilder: knitr
