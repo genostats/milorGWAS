@@ -1,6 +1,0 @@
-CXX_STD = CXX11 
-PKG_CPPFLAGS += -I ../inst/include/milorGWAS/  -lz 
-
-ZLIB_LIBRARY = C:/Rtools/local320/lib/i386/libz.a
-
-
