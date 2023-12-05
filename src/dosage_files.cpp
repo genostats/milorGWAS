@@ -4,7 +4,6 @@
 #include <fstream>
 #include <sstream>
 #include "dosage_files.h"
-#include "gaston/gzstream.h"
 #include "token.h"
 #include "read_gen_line.h"
 #include "read_vcf_header.h"

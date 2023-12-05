@@ -7,6 +7,11 @@
 
 using namespace Rcpp;
 
+#ifdef RCPP_USE_GLOBAL_ROSTREAM
+Rcpp::Rostream<true>&  Rcpp::Rcout = Rcpp::Rcpp_cout_get();
+Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
+#endif
+
 // GWAS_approx_pql_bed
 List GWAS_approx_pql_bed(XPtr<matrix4> pA, NumericVector PY, NumericMatrix P, NumericVector p, int beg, int end, std::string coding);
 RcppExport SEXP _milorGWAS_GWAS_approx_pql_bed(SEXP pASEXP, SEXP PYSEXP, SEXP PSEXP, SEXP pSEXP, SEXP begSEXP, SEXP endSEXP, SEXP codingSEXP) {
@@ -181,7 +186,7 @@ BEGIN_RCPP
 END_RCPP
 }
 
-RcppExport SEXP gg_manhattan_thinning(SEXP, SEXP, SEXP, SEXP);
+RcppExport SEXP gg_manhattan_thinning(void *, void *, void *, void *);
 
 static const R_CallMethodDef CallEntries[] = {
     {"_milorGWAS_GWAS_approx_pql_bed", (DL_FUNC) &_milorGWAS_GWAS_approx_pql_bed, 7},

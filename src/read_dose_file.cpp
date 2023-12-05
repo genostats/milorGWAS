@@ -2,7 +2,6 @@
 #include <string>
 #include <iostream>
 #include <fstream>
-#include "gaston/gzstream.h"
 #include "dosage_files.h"
 
 using namespace Rcpp;

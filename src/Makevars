@@ -1,2 +1,5 @@
 CXX_STD = CXX11 
-PKG_CPPFLAGS += -I ../inst/include/milorGWAS/  -lz
+PKG_CPPFLAGS += -I ../inst/include/milorGWAS/ 
+# link zlib
+PKG_LIBS = -lz	
+

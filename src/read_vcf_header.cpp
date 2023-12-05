@@ -1,3 +1,4 @@
+#include "gaston/gzstream.h"
 #include "read_vcf_header.h"
 
 void read_vcf_samples(std::string line, std::vector<std::string> & samples) {
@@ -58,15 +59,5 @@ List read_vcf_head(std::string filename) {
   L["format_ids"] = wrap(FORMAT_IDS);
 
   return L;
-}
-
-RcppExport SEXP gg_read_vcf_head(SEXP filenameSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< std::string >::type filename(filenameSEXP);
-    rcpp_result_gen = Rcpp::wrap(read_vcf_head(filename));
-    return rcpp_result_gen;
-END_RCPP
 }
 
