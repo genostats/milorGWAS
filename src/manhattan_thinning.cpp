@@ -3,7 +3,6 @@
 
 using namespace Rcpp;
 
-// [[Rcpp::export]]
 double min_(NumericVector x) { // suite à problèmes avec na_omit qui ne reconnaît pas les -NA_real_ ... (Rcpp 0.12.14)
   double infinity = std::numeric_limits<double>::infinity();
   double m = infinity;
@@ -15,7 +14,6 @@ double min_(NumericVector x) { // suite à problèmes avec na_omit qui ne reconn
   return m;
 }
 
-// [[Rcpp::export]]
 double max_(NumericVector x) {
   double infinity = std::numeric_limits<double>::infinity();
   double m = -infinity;

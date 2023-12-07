@@ -31,6 +31,7 @@ class gwas_logit_offset {
   // [Issue de la décomposition QR de la matrice de covariables]
   gwas_logit_offset(NumericVector Y, NumericVector Offset, NumericMatrix Q, scalar_t tol_, int max_iter_, snp_filler<scalar_t> & S_) 
   : n(Y.size()), r(Q.ncol()), tol(tol_), max_iter(max_iter_), y(n), offset(n), q(n,r), SNP(n), S(S_) {
+
     if(Q.nrow() != n || Offset.size() != n) 
       stop("Dimensions mismatch\n");
 
