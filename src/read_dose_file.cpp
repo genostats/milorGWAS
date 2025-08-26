@@ -53,8 +53,8 @@ NumericVector dose_file_dim(CharacterVector filename) {
   int snp_pos;
   std::vector<double> dosage;
   in.read_line(dosage, snp_id, snp_pos, chr, A1, A2);
-  int nb_inds = dosage.size();
-  int nb_snps = 1;
+  size_t nb_inds = dosage.size();
+  size_t nb_snps = 1;
   dosage.clear();
   while( in.read_line(dosage, snp_id, snp_pos, chr, A1, A2) ) {
     nb_snps++;

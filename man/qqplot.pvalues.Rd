@@ -35,6 +35,9 @@ qqplot.pvalues(
 
 \item{...}{Graphical parameters to be passed to \code{plot} and \code{points}}
 }
+\value{
+Returns a 'NULL'
+}
 \description{
 Draws a QQ plot of p-values
 }

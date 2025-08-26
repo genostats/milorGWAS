@@ -14,7 +14,7 @@ vignette: >
 ---
 ```{r echo = FALSE}
 oldoptions <- options()
-oldpar <- par()
+oldpar <- par(no.readonly = TRUE)
 options(width = 120)
 ```
 

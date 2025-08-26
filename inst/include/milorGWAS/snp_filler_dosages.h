@@ -22,11 +22,11 @@ class snp_filler_dosages : public snp_filler<scalar_t> {
   std::vector<double> F1;
   std::vector<double> F2;
 
-  int beg, end;
-  int nb_inds;
-  int i;
+  size_t beg, end;
+  size_t nb_inds;
+  size_t i;
 
-  snp_filler_dosages(CharacterVector filename, int beg_, int end_, int n)
+  snp_filler_dosages(CharacterVector filename, size_t beg_, size_t end_, size_t n)
     : snp_filler<scalar_t>(), in(filename), beg(beg_), end(end_), nb_inds(n), i(0) {
   };
 
@@ -64,7 +64,7 @@ class snp_filler_dosages : public snp_filler<scalar_t> {
     // ajout deux cols fréquences et remplissage SNP
     // double ss = std::accumulate(dosage.begin(), dosage.end(), 0.0)/dosage.size()/2.0;
     scalar_t ss = 0.0;
-    for(int i = 0; i < nb_inds; i++) {
+    for(size_t i = 0; i < nb_inds; i++) {
        ss += SNP[i] = dosage[i];
     }
     ss /= (2.0*nb_inds);

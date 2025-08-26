@@ -73,7 +73,7 @@ void dosages::start() {
   }
   type = PES;
   // set sample names
-  for(int i = 5; i < splitted.size(); i++)
+  for(size_t i = 5; i < splitted.size(); i++)
     samples.push_back( splitted[i] );
   // read first data line
   if(std::getline(in, line)) 

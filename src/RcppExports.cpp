@@ -164,8 +164,6 @@ BEGIN_RCPP
 END_RCPP
 }
 
-RcppExport SEXP gg_manhattan_thinning(void *, void *, void *, void *);
-
 static const R_CallMethodDef CallEntries[] = {
     {"_milorGWAS_GWAS_approx_pql_bed", (DL_FUNC) &_milorGWAS_GWAS_approx_pql_bed, 7},
     {"_milorGWAS_GWAS_approx_pql_dosages", (DL_FUNC) &_milorGWAS_GWAS_approx_pql_dosages, 6},
@@ -178,7 +176,6 @@ static const R_CallMethodDef CallEntries[] = {
     {"_milorGWAS_nb_inds_dose_file", (DL_FUNC) &_milorGWAS_nb_inds_dose_file, 1},
     {"_milorGWAS_samples_dose_file", (DL_FUNC) &_milorGWAS_samples_dose_file, 1},
     {"_milorGWAS_read_vcf_head", (DL_FUNC) &_milorGWAS_read_vcf_head, 1},
-    {"gg_manhattan_thinning", (DL_FUNC) &gg_manhattan_thinning, 4},
     {NULL, NULL, 0}
 };
 

@@ -14,7 +14,7 @@
 #' @details This function draws a QQ plot of \eqn{p}-values, stratified by categories.
 #' If the parameter \code{snp.cat} is missing, the function falls back on \code{gaston::qqplot.pvalues}.
 #'
-#' @return NULL
+#' @return Returns a 'NULL'
 #' 
 #' @seealso \code{\link{SNP.category}}, \code{\link[gaston]{qqplot.pvalues}} (in gaston)
 #' 
