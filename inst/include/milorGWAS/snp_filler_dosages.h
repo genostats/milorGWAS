@@ -72,7 +72,7 @@ class snp_filler_dosages : public snp_filler<scalar_t> {
     F1.push_back(1.0 - ss);
     F2.push_back(ss);
 
-    if(ss < 1.0 || ss > 0.0) {
+    if(0.0 < ss && ss < 1.0) {
        this->monomorphic = false;
     }
     return true;
