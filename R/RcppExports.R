@@ -17,14 +17,6 @@ GWAS_logit_offset_dosages <- function(filename, Y, Offset, Q, beg, end, tol, max
     .Call('_milorGWAS_GWAS_logit_offset_dosages', PACKAGE = 'milorGWAS', filename, Y, Offset, Q, beg, end, tol, max_iter)
 }
 
-min_ <- function(x) {
-    .Call('_milorGWAS_min_', PACKAGE = 'milorGWAS', x)
-}
-
-max_ <- function(x) {
-    .Call('_milorGWAS_max_', PACKAGE = 'milorGWAS', x)
-}
-
 manhattan_thinning <- function(x, y, mx, my) {
     .Call('_milorGWAS_manhattan_thinning', PACKAGE = 'milorGWAS', x, y, mx, my)
 }

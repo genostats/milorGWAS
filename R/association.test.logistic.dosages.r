@@ -9,6 +9,7 @@
 #' @param algorithm Algorithm to use
 #' @param eigenK eigen decomposition of K (only if \code{p} > 0)
 #' @param p Number of principal components to include in the model
+#' @param n.cores Number of cores to use
 #' @param ... Additional parameter for \code{gaston::logistic.mm.aireml}
 #'
 #' @details Dosage files can be VCF files with 'DS' or 'GP' fields. It is also possible to use a file

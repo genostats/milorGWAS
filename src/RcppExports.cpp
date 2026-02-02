@@ -83,28 +83,6 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
-// min_
-double min_(NumericVector x);
-RcppExport SEXP _milorGWAS_min_(SEXP xSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
-    rcpp_result_gen = Rcpp::wrap(min_(x));
-    return rcpp_result_gen;
-END_RCPP
-}
-// max_
-double max_(NumericVector x);
-RcppExport SEXP _milorGWAS_max_(SEXP xSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
-    rcpp_result_gen = Rcpp::wrap(max_(x));
-    return rcpp_result_gen;
-END_RCPP
-}
 // manhattan_thinning
 IntegerVector manhattan_thinning(NumericVector x, NumericVector y, int mx, int my);
 RcppExport SEXP _milorGWAS_manhattan_thinning(SEXP xSEXP, SEXP ySEXP, SEXP mxSEXP, SEXP mySEXP) {
@@ -193,8 +171,6 @@ static const R_CallMethodDef CallEntries[] = {
     {"_milorGWAS_GWAS_approx_pql_dosages", (DL_FUNC) &_milorGWAS_GWAS_approx_pql_dosages, 6},
     {"_milorGWAS_GWAS_logit_offset_bed", (DL_FUNC) &_milorGWAS_GWAS_logit_offset_bed, 10},
     {"_milorGWAS_GWAS_logit_offset_dosages", (DL_FUNC) &_milorGWAS_GWAS_logit_offset_dosages, 8},
-    {"_milorGWAS_min_", (DL_FUNC) &_milorGWAS_min_, 1},
-    {"_milorGWAS_max_", (DL_FUNC) &_milorGWAS_max_, 1},
     {"_milorGWAS_manhattan_thinning", (DL_FUNC) &_milorGWAS_manhattan_thinning, 4},
     {"_milorGWAS_chol_inverse", (DL_FUNC) &_milorGWAS_chol_inverse, 1},
     {"_milorGWAS_read_dose_file", (DL_FUNC) &_milorGWAS_read_dose_file, 1},

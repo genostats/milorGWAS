@@ -37,6 +37,8 @@ association.test.logistic.dosage(
 
 \item{p}{Number of principal components to include in the model}
 
+\item{n.cores}{Number of cores to use}
+
 \item{...}{Additional parameter for \code{gaston::logistic.mm.aireml}}
 }
 \value{

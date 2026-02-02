@@ -7,7 +7,7 @@ static List chr_ids;
 
 int chr_to_int(std::string & chr) {
   int r = std::atoi(chr.c_str());
-  int c = chr_ids.size();
+  // int c = chr_ids.size();
   if( r == 0 && chr_ids.containsElementNamed(chr.c_str()) )
     r = chr_ids[chr];
   return r;

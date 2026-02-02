@@ -1,1 +1,16 @@
-0.4  Added argument 'model' in association.test.logistic
+# milorGWAS 0.4  
+
+## New Features
+
+* Added argument 'model' in association.test.logistic
+
+# milorGWAS 0.5
+
+## New Features
+
+* Added function to deal with dosages
+
+# milorGWAS 0.6
+
+* update in code in agreement to gaston 1.6
+
